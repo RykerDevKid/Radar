@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RADAR</title>
+
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div id="navbar-placeholder"></div>
+    <script>
+        $(function(){
+            $("#navbar-placeholder").load("navbar/nav.html");
+        });
+    </script>
+
+    <!-- MAIN CONTENT -->
+    <section>
+        <div class="container">
+            <h1> [ ryker's awesome digital activities & resources. ] </h1>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2> RANDOM MEME GENERATOR </h2>
+            <p class="meme-p">Meme description.</p>
+            <img class="meme-img" src="" alt="">
+        </div>
+    </section>
+
+    <script type="module">
+
+        const url = await fetch('https://meme-api.com/gimme');
+        const random = await url.json();
+
+        const img = document.getElementsByClassName('meme-img')[0];
+        img.src = `${random.url}`;
+        const paragraph = document.getElementsByClassName('meme-p')[0];
+        paragraph.innerHTML = `${random.title}`;
+    </script>
+</body>
+</html>

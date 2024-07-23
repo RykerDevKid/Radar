@@ -1,0 +1,174 @@
+section .container {
+    display: flex;
+    flex-direction: column;
+    margin: 24px 0 24px 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+.container h1 {
+    margin-top: 48px;
+    margin-bottom: 96px;
+    text-align: center;
+}
+
+.container h2 {
+    text-align: center;
+}
+
+.container p {
+    margin-top: 24px;
+    text-align: center;
+    
+}
+
+.container .meme-img {
+    width: 20vw;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: 10px;
+    border: 4px solid black;
+}
+
+@media (min-width: 576px) {
+    section .container {
+        margin: auto;
+        padding: 0 10px;
+    }
+    .container h1 {
+        font-size: 18px;
+    }
+    .container h2 {
+        font-size: 24px;
+    }
+    .container p {
+        font-size: 16px;
+    }
+    .container .meme-img {
+        margin-top: 12px;
+        width: 80vw;
+    }
+}
+
+@media (min-width: 1400px) {
+    section .container {
+        margin: auto;
+        padding: 0 10px;
+    }
+    .container h1 {
+        font-size: 24px;
+    }
+    .container h2 {
+        font-size: 26px;
+    }
+    .container p {
+        font-size: 20px;
+    }
+    .container .meme-img {
+        margin-top: 12px;
+        width: 560px;
+    }
+}
+
+@media (max-width: 1400px) {
+    section .container {
+        margin: auto;
+        padding: 0 10px;
+    }
+    .container h1 {
+        font-size: 24px;
+    }
+    .container h2 {
+        font-size: 26px;
+    }
+    .container p {
+        font-size: 20px;
+    }
+    .container .meme-img {
+        margin-top: 12px;
+        width: 40vw;
+    }
+}
+
+@media (max-width: 1200px) {
+    section .container {
+        margin: auto;
+        padding: 0 10px;
+    }
+    .container h1 {
+        font-size: 24px;
+    }
+    .container h2 {
+        font-size: 26px;
+    }
+    .container p {
+        font-size: 19px;
+    }
+    .container .meme-img {
+        margin-top: 12px;
+    }
+}
+
+@media (max-width: 992px) {
+    section .container {
+        margin: auto;
+        padding: 0 10px;
+    }
+    .container h1 {
+        font-size: 24px;
+    }
+    .container h2 {
+        font-size: 26px;
+    }
+    .container p {
+        font-size: 16px;
+    }
+    .container .meme-img {
+        margin-top: 12px;
+        width: 40vw;
+    }
+}
+
+@media (max-width: 768px) {
+    section .container {
+        margin: auto;
+        padding: 0 10px;
+    }
+    .container h1 {
+        font-size: 24px;
+    }
+    .container h2 {
+        font-size: 26px;
+    }
+    .container p {
+        font-size: 16px;
+    }
+    .container .meme-img {
+        margin-top: 12px;
+        width: 50vw;
+    }
+}
+
+@media (max-width: 576px) {
+    section .container {
+        margin: auto;
+        padding: 0 10px;
+    }
+    .container h1 {
+        font-size: 21px;
+    }
+    .container h2 {
+        font-size: 24px;
+    }
+    .container p {
+        font-size: 16px;
+    }
+    .container .meme-img {
+        margin-top: 12px;
+        width: 50vw;
+    }
+}
+

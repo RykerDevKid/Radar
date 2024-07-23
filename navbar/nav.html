@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li class="navbar-logo">RADAR</li>
+            <li class="navbar-toggle"><i class="fa fa-bars"></i></li>
+            <li class="navbar-links"><a href="#">Games</a></li>
+            <li class="navbar-links"><a href="#">Tools</a></li>
+        </ul>
+    </nav>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 900;
+        }
+        .navbar {
+            margin: 10px;
+        }
+        .navbar ul {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            background-color: black;
+            padding-left: 10px;
+            padding-right: 10px;
+            border-radius: 12px;
+            color: white;
+        }
+        .navbar li {
+            list-style-type: none;
+            padding: 1rem;
+        }
+        .navbar a {
+            text-decoration: none;
+            color: white;
+        }
+        .navbar-logo {
+            flex: 1;
+            font-size: 1.5rem;
+            user-select: none;
+        }
+        .navbar-toggle {
+            display: none;
+        }
+        .navbar-links {
+            transition: 0.3s;
+            margin-left: 10px;
+            border-radius: 6px;
+        }
+        .navbar-links:hover {
+            background-color: white;
+        }
+        .navbar-links:hover a {
+            color: black;
+        }
+        @media (max-width: 600px) {
+            .navbar ul {
+                flex-wrap: wrap;
+            }
+            .navbar-toggle {
+                display: block;
+            }
+            .navbar-links {
+                display: none;
+                width: 100%;
+                text-align: center;
+                margin-bottom: 10px;
+            }
+            .active {
+                display: block;
+            }
+        }
+    </style>
+
+    <script>
+        const toggleButton = document.getElementsByClassName('navbar-toggle')[0];
+        const navbarLinks = document.getElementsByClassName('navbar-links');
+        toggleButton.addEventListener('click', function() {
+            for (var i=0; i<navbarLinks.length; i++)
+            navbarLinks[i].classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
