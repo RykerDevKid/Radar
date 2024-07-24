@@ -20,6 +20,7 @@
     <section>
         <div class="container">
             <h1> [ ryker's awesome digital activities & resources. ] </h1>
+            <p>Feel free to join the Discord, or <a href="">click here</a> to chat using the widget.</p>
         </div>
     </section>
 
@@ -35,7 +36,7 @@
 
     <script type="module">
 
-        const url = await fetch('https://meme-api.com/gimme');
+        const url = await fetch('https://meme-api.com/gimme/meme');
         const random = await url.json();
 
         const img = document.getElementsByClassName('meme-img')[0];

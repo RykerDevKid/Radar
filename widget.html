@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RADAR</title>
+
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed"></script>
+    <link rel="stylesheet" href="widget.css">
+</head>
+<body>
+    <div id="navbar-placeholder"></div>
+    <script>
+        $(function(){
+            $("#navbar-placeholder").load("navbar/nav.html");
+        });
+    </script>
+
+    <!-- MAIN CONTENT -->
+    <section>
+        <div class="container">
+            <h1> [ sign-in to chat using the widget ] </h1>
+            <p class="memberCount">ONLINE MEMBERS: [ UNAVAILABLE ]</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="discord-widget">
+                <widgetbot
+                    server="299881420891881473"
+                    channel="355719584830980096"
+                    width="60vw"
+                    height="35vw"
+                ></widgetbot>
+            </div>
+        </div>
+    </section>
+
+    <script type="module">
+
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "http://78.108.218.98:3009/");
+        xhr.send();
+        xhr.responseType = "json";
+        xhr.onload = () => {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                const data = xhr.response;
+                const p = document.getElementsByClassName('memberCount')[0];
+                p.innerHTML = `ONLINE MEMBERS: [ ${xhr.response} ]`;
+            } else {
+                console.log(`Error: ${xhr.status}`);
+            }
+        }
+
+        
+    </script>
+</body>
+</html>
