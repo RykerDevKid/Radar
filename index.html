@@ -3,46 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RADAR</title>
+    <title>TacoPlanet</title>
+    <meta name="description" content="All your favorite school games completely unblocked. Yw!"/>
 
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <link rel="stylesheet" href="index.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
-    <div id="navbar-placeholder"></div>
-    <script>
-        $(function(){
-            $("#navbar-placeholder").load("navbar/nav.html");
-        });
-    </script>
+    <div id="jquery-navigation"></div><script>$(function(){ $("#jquery-navigation").load("navigation/main.html") })</script>
 
     <!-- MAIN CONTENT -->
     <section>
-        <div class="container">
-            <h1> [ ryker's awesome digital activities & resources. ] </h1>
-            <p>Feel free to join the Discord, or <a href="">click here</a> to chat using the widget.</p>
+        <div class="section__fact-holder">
+            <h1>Here's the fact of the day!</h1>
+            <p id="fact">[ Loading Fact.. ]</p>
         </div>
+        
     </section>
 
     <section>
-        <div class="container">
-            <div class="meme-holder">
-                <h2> RANDOM MEME GENERATOR </h2>
-                <p class="meme-p">Generating..</p>
-                <img class="meme-img" src="" alt="">
+        <div class="section__random-meme">
+            <div class="main-wrapper">
+                <h1>Random Meme Generator</h1>
+                <div class="meme-wrapper">
+                    <p>[ MEME CAPTION ]</p>
+                    <img src="" alt="">
+                </div>
+                <button>Generate</button>
             </div>
         </div>
     </section>
 
+    <!-- JAVASCRIPT -->
     <script type="module">
+        // Random Fact API
+        const facturl = await fetch('https://uselessfacts.jsph.pl/api/v2/facts/today');
+        const factdata = await facturl.json();
 
-        const url = await fetch('https://meme-api.com/gimme/meme');
-        const random = await url.json();
+        const placeholder = document.getElementById('fact');
+        placeholder.innerHTML = `${factdata.text}`;
+        // Random Meme API
+        const memeurl = await fetch('https://meme-api.com/gimme/meme');
+        const memedata = await memeurl.json();
 
-        const img = document.getElementsByClassName('meme-img')[0];
-        img.src = `${random.url}`;
-        const paragraph = document.getElementsByClassName('meme-p')[0];
-        paragraph.innerHTML = `${random.title}`;
+        const textPlaceholder = document.querySelector('.meme-wrapper p');
+        textPlaceholder.innerHTML = `${memedata.title}`;
+        const imgPlaceholder = document.querySelector('.meme-wrapper img');
+        imgPlaceholder.src = `${memedata.url}`;
+
+        var cooldown = false;
+        document.querySelector('.main-wrapper button').onclick = async function() {
+            if (cooldown == true) return;
+            await fetch('https://meme-api.com/gimme/meme').then(res => res.json()).then(res => {
+                textPlaceholder.innerHTML = 'Fetching meme..';
+                imgPlaceholder.src = 'https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png';
+                document.querySelector('.main-wrapper button').innerHTML = 'PLS WAIT';
+                cooldown = true;
+                setTimeout(function() {
+                    textPlaceholder.innerHTML = `${res.title}`;
+                    imgPlaceholder.src = `${res.url}`;
+                    cooldown = false;
+                    document.querySelector('.main-wrapper button').innerHTML = 'Generate';
+                }, 2000);
+            });
+           
+        }
     </script>
 </body>
 </html>

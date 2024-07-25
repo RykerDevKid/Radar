@@ -1,189 +1,164 @@
-section .container {
-    display: flex;
-    flex-direction: column;
-    margin: 24px 0 24px 0;
+/* RESET */
+* {
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.container h1 {
-    margin-top: 48px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
+/* IMPORT FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
+.josefin-sans-jsa {
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
 }
 
-.container p {
-    margin-top: 6px;
-    margin-bottom: 24px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+
+.space-grotesk-sgrot {
+    font-family: "Space Grotesk", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
 }
 
-.container .meme-holder {
+/* BASE STYLES */
+
+body {
+    background-color: #e8f0f7;
+    padding-top: 60px;
+}
+
+section .section__fact-holder {
     display: flex;
+    padding: 24px 0 24px 0;
     flex-direction: column;
-    border: 4px solid black;
-    padding: 5px;
-    width: 750px;
-    height: auto;
-    margin-left: auto;
-    margin-right: auto;
+    box-sizing: border-box;
     margin-top: auto;
-    margin-bottom: 10px;
+    margin-right: auto;
+    margin-bottom: auto;
+    margin-left: auto;
 }
 
-.meme-holder h2 {
-    text-align: center;
-    margin-top: 10px;
-}
-
-.meme-holder p {
-    margin-top: 24px;
+.section__fact-holder h1 {
+    font-family: 'sgrot', sans-serif;
     text-align: center;
 }
 
-.meme-holder .meme-img {
-    width: 20%;
+.section__fact-holder p {
+    text-align: center;
+    margin-top: 6px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+}
+
+section .section__random-meme,
+.section__random-meme .main-wrapper,
+.main-wrapper .meme-wrapper {
+    display: flex;
+    padding: 24px 0 24px 0;
+    flex-direction: column;
+    box-sizing: border-box;
+    margin-top: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+}
+
+section .section__random-meme {
+    align-items: center;
+    justify-content: center;
+}
+
+.section__random-meme .main-wrapper {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: auto;
+    margin-top: auto;
+    max-width: 560px;
     height: auto;
+}
+
+.main-wrapper .meme-wrapper {
+    border: 4px solid black;
+    padding: 24px 24px;
+}
+
+.meme-wrapper img {
+    border: 4px solid black;
+    margin-top: 10px;
+    width: 80%;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 12px;
+    height: auto;
+}
+
+.section__random-meme .main-wrapper h1 {
+    font-family: 'sgrot', sans-serif;
+    text-transform: uppercase;
+    text-align: center;
     margin-bottom: 10px;
-    border: 4px solid black;
 }
 
-@media (min-width: 1400px) {
-    section .container {
-        margin: auto;
-        padding: 0 10px;
-    }
-    .container h1 {
-        font-size: 24px;
-    }
-    .container .meme-holder {
-        width: 576px;
-    }
-    .meme-holder h2 {
-        font-size: 26px;
-    }
-    .meme-holder p {
-        font-size: 20px;
-    }
-    .meme-holder .meme-img {
-        width: 90%;
-    }
-    
+.main-wrapper .meme-wrapper p {
+    font-family: 'sgrot', sans-serif;
+    font-size: 18px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-@media (max-width: 1400px) {
-    section .container {
-        margin: auto;
-        padding: 0 10px;
-    }
-    .container h1 {
-        font-size: 24px;
-    }
-    .meme-holder h2 {
-        font-size: 26px;
-    }
-    .meme-holder p {
-        font-size: 20px;
-    }
-    .meme-holder .meme-img {
-        width: 90%;
-    }
-    .container .meme-holder {
-        width: 576px;
-    }
+.main-wrapper button {
+    border: none;
+    border-radius: 6px;
+    background-color: #000;
+    width: 30%;
+    height: 36px;
+    color: white;
+    font-family: "jsa", sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 4px;
+    margin-bottom: auto;
 }
 
-@media (max-width: 1200px) {
-    section .container {
-        margin: auto;
-        padding: 0 10px;
+.main-wrapper button:hover {
+    opacity: 0.9;
+}
+
+/* MEDIA QUERIES */
+
+@media (max-width: 650px) {
+    body {
+        padding-top: 120px;
     }
-    .container h1 {
-        font-size: 24px;
+
+    .header__content {
+        flex-direction: column;
+        padding: 25px 0;
+        row-gap: 18px;
     }
-    .meme-holder h2 {
-        font-size: 26px;
-    }
-    .meme-holder p {
-        font-size: 19px;
-    }
-    .container .meme-holder {
-        width: 576px;
-    }
-    .meme-holder .meme-img {
-        width: 90%;
+
+    .nav__list {
+        column-gap: 20px;
     }
 }
 
-@media (max-width: 992px) {
-    section .container {
-        margin: auto;
-        padding: 0 10px;
+@media (max-height: 667px) {
+    section .section__random-meme,
+    .section__random-meme .main-wrapper,
+    .main-wrapper .meme-wrapper {
+        padding: 0 0 24px 0;
     }
-    .container h1 {
-        font-size: 24px;
+    section .section__fact-holder {
+        padding: 0 0 5px 0;
     }
-    .meme-holder h2 {
-        font-size: 26px;
-    }
-    .container .meme-holder {
-        width: 576px;
-    }
-    .meme-holder p {
-        font-size: 16px;
-    }
-    .meme-holder .meme-img {
-        width: 90%;
+    section {
+        border-bottom: 1px solid black;
     }
 }
-
-@media (max-width: 768px) {
-    section .container {
-        margin: auto;
-        padding: 0 10px;
-    }
-    .container h1 {
-        font-size: 24px;
-    }
-    .meme-holder h2 {
-        font-size: 26px;
-    }
-    .meme-holder p {
-        font-size: 16px;
-    }
-    .container .meme-holder {
-        width: 576px;
-    }
-    .meme-holder .meme-img {
-        width: 90%;
-    }
-}
-
-@media (max-width: 576px) {
-    section .container {
-        margin: auto;
-        padding: 0 10px;
-    }
-    .container h1 {
-        font-size: 21px;
-    }
-    .meme-holder h2 {
-        font-size: 24px;
-    }
-    .meme-holder p {
-        font-size: 16px;
-    }
-    .container .meme-holder {
-        width: 90%;
-    }
-    .meme-holder .meme-img {
-        width: 90%;
-    }
-}
-

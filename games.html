@@ -3,37 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RADAR - Games</title>
+    <title>TacoPlanet</title>
+    <meta name="description" content="All your favorite school games completely unblocked. Yw!"/>
 
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <link rel="stylesheet" href="games.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script async src="https://www-taco.rykermc.org/widget/widget.js" data-id="r4-widget-connection"></script>
 </head>
 <body>
-    <div id="navbar-placeholder"></div>
-    <script>
-        $(function(){
-            $("#navbar-placeholder").load("navbar/nav.html");
-        });
-    </script>
+    <div id="jquery-navigation"></div><script>$(function(){ $("#jquery-navigation").load("navigation/main.html") })</script>
 
     <!-- MAIN CONTENT -->
-
     <section>
-        <div class="container">
-            <h1> [ my list of unblocked game links. ] </h1>
+        <div class="section__title">
+            <h1>Unblocked Games</h1>
+            <p>All the popular school websites, like Poki, fully accessible!</p>
         </div>
     </section>
+
     <section>
-        <div class="container">
+        <div class="section__games-list">
             <ul>
                 <li class="info"><a href="">🔴 = PATCHED; 🟢 = WORKING;</a></li>
-                <li class="poki"><a href="https://208.87.241.149/__cpi.php?s=UkQ2YXlSaWJuc3ZoeGR2dG04WW9LaDR3MU5nL3lQQXhwcnQ2SWZmY2pzc1UvYm8wRVFGMmNlazNRTGQrZFkwekZkUkZTbTdvT25ZVmxPdjE1QkhqMnl0YTRjdDIva1Job0daNE9yeldvYms9&r=aHR0cHM6Ly8yMDguODcuMjQxLjE0OS8%2FX19jcG89YUhSMGNITTZMeTl3YjJ0cExtTnZiUQ%3D%3D&__cpo=1" target="_blank">Poki Unblocked (STATUS: 🔴)</a></li>
-                <li class="smashkarts"><a href="https://108.181.32.61/__cpi.php?s=UkQ2YXlSaWJuc3ZoeGR2dG04WW9LbVU3OXU5REIyTHhGQmg0S2dXalhjTU5BVU02TGN6dUd2bXZIMlozK2NOOHl0cVRBeGQwdVhpUUM2T2QzSXFuT2puL24yUjhIVjRucThscUkrZHcxWUE9&r=aHR0cHM6Ly8xMDguMTgxLjMyLjYxLz9fX2Nwbz1hSFIwY0hNNkx5OXpiV0Z6YUd0aGNuUnpMbWx2&__cpo=1" target="_blank">Smashkarts Unblocked (STATUS: 🔴)</a></li>
-                <li class="roblox"><a href="https://newalgebra.com" target="_blank">Roblox Unblocked (STATUS: 🟢)</a></li>
-                <li class="1v1.lol"><a href="https://108.181.4.237/?__cpo=aHR0cHM6Ly8xdjEubG9s" target="_blank">1v1.lol Unblocked (STATUS: 🔴)</a></li>
-
+                <li class="poki"><a href="">Poki Unblocked (🔴)</a></li>
+                <li class="1v1"><a href="">1v1.LoL Unblocked (🔴)</a></li>
+                <li class="smashkarts"><a href="">Smashkarts.io Unblocked (🔴)</a></li>
+                <li class="roblox"><a href="https://newalgebra.com/">Roblox Emulator Unblocked (🟢)</a></li>
             </ul>
+            <div id="r4-widget-form"></div>
         </div>
     </section>
+
+    <section>
+        <div class="section__error">
+            <h1>Nothing to see here!</h1>
+            <p>This page is under construction.</p>
+        </div>
+        <div class="section__device-error">
+            <h1>Zoom out more to continue.</h1>
+            <p>If you are on mobile, reload the page in desktop mode.</p>
+        </div>
+    </section>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // KEY SEQUENCE DETECTION
+
+        function loadPage() {
+            document.querySelector('.section__error').style.display = 'none';
+            document.querySelector('section .section__title').style.visibility = 'visible';
+            document.querySelector('section .section__games-list').style.display = 'flex';
+            document.querySelector('section .section__games-list').style.visibility = 'visible';
+        }
+
+        const pressed = [];
+        const secretCode = 'taco';
+        var enabled = true;
+        window.addEventListener('keyup', (e) => {
+            if (enabled == false) return;
+            pressed.push(e.key);
+            pressed.splice(-secretCode.length - 1 , pressed.length - secretCode.length);
+            if (pressed.join('').includes(secretCode)) {
+                console.log('Received the key sequence.');
+                loadPage();
+                enabled = false;
+            }
+        })
+    </script>
 </body>
 </html>

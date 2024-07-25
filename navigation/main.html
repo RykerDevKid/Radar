@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    
+    <header class="header">
+        <div class="header__content">
+            <a href="/" class="logo">
+                <h1 class="logo__h1">taco planet.</h1>
+            </a>
+
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="/games" class="nav__link">Games</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link">My Projects</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="https://discord.gg/invite/etNp9puMkP" target="_blank" class="btn">Discord</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <style>
+        /* IMPORT FONTS */
+        @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+        .josefin-sans-jsa {
+            font-family: "Josefin Sans", sans-serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+        .space-grotesk-sgrot {
+            font-family: "Space Grotesk", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        /* RESETS */
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* NORMAL STYLES */
+
+        .header {
+            background-color: rgb(19, 22, 26);
+            position: fixed;
+            width: 100%;
+            top: 0;
+        }
+
+        .header__content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        .logo__h1 {
+            color: #fff;
+            font-size: 28px;
+            font-family: "Space Grotesk", sans-serif;
+        }
+
+        .nav {
+
+        }
+
+        .nav__list {
+            display: flex;
+            column-gap: 25px;
+        }
+
+        .nav__item {
+
+        }
+
+        .nav__link {
+            color: rgba(255, 255, 255, .75);
+            font-size: 15px;
+            transition: all 0.2s;
+            position: relative;
+            font-family: "Josefin Sans", sans-serif;
+        }
+
+        .nav__link:hover,
+        .nav__link:focus {
+            color: rgba(255, 255, 255, 1);
+        }
+
+        .nav__link::after {
+            content: '';
+            height: 2px;
+            width: 100%;
+            background-color: #5476ee;
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            transition: all 0.2s;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .nav__link:hover::after {
+            opacity: 1;
+        }
+
+        .btn {
+            color: #fff;
+            background-color: #7289da;
+            padding: 7px 18px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            font-size: 15px;
+            font-weight: 700;
+            transition: all 0.2s;
+            font-family: "Josefin Sans", sans-serif;
+        }
+
+        .btn:hover {
+            background-color: #5476ee;
+        }
+
+        /* MEDIA QUERIES */
+
+        @media (max-width: 650px) {
+            .header__content {
+                flex-direction: column;
+                padding: 25px 0;
+                row-gap: 18px;
+            }
+            .nav__list {
+                column-gap: 20px;
+            }
+        }
+    </style>
+</body>
+</html>
