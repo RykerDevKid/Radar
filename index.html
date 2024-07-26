@@ -95,8 +95,9 @@
                     imgPlaceholder.src = `${res[0].url}`;
                     cooldown = false;
                     document.querySelector('.main-wrapper button').innerHTML = 'Generate';
-                    document.querySelector('.main-wrapper button').scrollIntoView();
+                    
                 }, 2000);
+                document.querySelector('.main-wrapper button').scrollIntoView();
             });
            
         }
