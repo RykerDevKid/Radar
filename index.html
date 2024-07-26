@@ -27,35 +27,19 @@
             <h1>school menu.</h1>
             <div class="main-wrapper">
                 <div class="grid__data-wrapper">
-                    <h1>Lunch Today</h1>
+                    <h1 class="data-wrapper__date">Aug. 14, 2024</h1>
+                    <h1>Breakfast</h1>
+                    <p>Scraping data..</p>
+                    <h1>Lunch</h1>
                     <p>Scraping data..</p>
                 </div>
                 <div class="grid__data-wrapper">
-                    <h1>Breakfast Today</h1>
+                    <h1 class="data-wrapper__date">Aug. 15, 2024</h1>
+                    <h1>Breakfast</h1>
+                    <p>Scraping data..</p>
+                    <h1>Lunch</h1>
                     <p>Scraping data..</p>
                 </div>
-                <div class="grid__data-wrapper">
-                    <h1>Lunch Tomorrow</h1>
-                    <p>Scraping data..</p>
-                </div>
-                <div class="grid__data-wrapper">
-                    <h1>Breakfast Tomorrow</h1>
-                    <p>Scraping data..</p>
-                </div>
-            </div>
-        </div>
-        <div class="section__school-menu-mobile">
-            <h1>school menu.</h1>
-            <div class="main-wrapper">
-                <div class="grid__data-wrapper">
-                    <h1>Lunch Tomorrow</h1>
-                    <p>Scraping data..</p>
-                </div>
-                <div class="grid__data-wrapper">
-                    <h1>Breakfast Tomorrow</h1>
-                    <p>Scraping data..</p>
-                </div>
-            </div>
         </div>
         <div class="section__random-meme">
             <div class="main-wrapper">
@@ -72,11 +56,12 @@
     <!-- JAVASCRIPT -->
     <script type="module">
         // Random Fact API
-        const facturl = await fetch('https://uselessfacts.jsph.pl/api/v2/facts/today');
-        const factdata = await facturl.json();
+        await fetch('https://uselessfacts.jsph.pl/api/v2/facts/today').then(res => res.json()).then(res => {
+            const placeholder = document.getElementById('fact');
+            placeholder.innerHTML = `${res.text}`;
+        });
 
-        const placeholder = document.getElementById('fact');
-        placeholder.innerHTML = `${factdata.text}`;
+        
         // Random Meme API
         const memeurl = await fetch('https://api.thecatapi.com/v1/images/search');
         const memedata = await memeurl.json();
@@ -120,7 +105,7 @@
         }
         // Lunch Menu Scraper
         var request = new XMLHttpRequest();
-        request.open("GET", "https://cors-anywhere.herokuapp.com/" + "https://www.alwood.net/dining?filter=52802", true);
+        request.open("GET", "https://corsproxy.io/?" + encodeURIComponent("https://www.alwood.net/dining?filter=52802"), true);
         request.responseType = "document";
         request.onload = function (e) {
             if (request.readyState === 4) {
@@ -129,18 +114,16 @@
                 var breakfasttomorrow = request.responseXML.querySelector("div.page-container-item:nth-child(3) > div:nth-child(1) > div:nth-child(2) > pre:nth-child(2)");
                 var lunchtoday = request.responseXML.querySelector("div.page-container-item:nth-child(2) > div:nth-child(1) > div:nth-child(3) > pre:nth-child(2)");
                 var lunchtomorrow = request.responseXML.querySelector("div.page-container-item:nth-child(3) > div:nth-child(1) > div:nth-child(3) > pre:nth-child(2)");
-                const lunchTodayPlaceholder = document.querySelector(".section__school-menu > div:nth-child(2) > div:nth-child(1) > p:nth-child(2)");
-                const breakfastTodayPlaceholder = document.querySelector(".section__school-menu > div:nth-child(2) > div:nth-child(2) > p:nth-child(2)");
-                const lunchTomorrowPlaceholder = document.querySelector("div.grid__data-wrapper:nth-child(3) > p:nth-child(2)");
-                const breakfastTomorrowPlaceholder = document.querySelector("div.grid__data-wrapper:nth-child(4) > p:nth-child(2)");
-                const MOBILE__lunchTomorrow = document.querySelector(".section__school-menu-mobile > div:nth-child(2) > div:nth-child(1) > p:nth-child(2)");
-                const MOBILE__breakfastTomorrow = document.querySelector(".section__school-menu-mobile > div:nth-child(2) > div:nth-child(2) > p:nth-child(2)");
+
+                const lunchTodayPlaceholder = document.querySelector("div.grid__data-wrapper:nth-child(1) > p:nth-child(5)");
+                const breakfastTodayPlaceholder = document.querySelector("div.grid__data-wrapper:nth-child(1) > p:nth-child(3)");
+                const lunchTomorrowPlaceholder = document.querySelector("div.grid__data-wrapper:nth-child(2) > p:nth-child(5)");
+                const breakfastTomorrowPlaceholder = document.querySelector("div.grid__data-wrapper:nth-child(2) > p:nth-child(3)");
+
                 lunchTodayPlaceholder.innerHTML = lunchtoday.innerHTML;
                 breakfastTodayPlaceholder.innerHTML = breakfasttoday.innerHTML;
                 lunchTomorrowPlaceholder.innerHTML = lunchtomorrow.innerHTML;
                 breakfastTomorrowPlaceholder.innerHTML = breakfasttomorrow.innerHTML;
-                MOBILE__lunchTomorrow.innerHTML = lunchtomorrow.innerHTML;
-                MOBILE__breakfastTomorrow.innerHTML = breakfasttomorrow.innerHTML;
                 } else {
                 console.error(request.status, request.statusText);
                 }
