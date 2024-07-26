@@ -21,10 +21,44 @@
         
     </section>
 
-    <section>
+    <section class="section__two">
+        <div class="section__school-menu">
+            <h1>school menu.</h1>
+            <div class="main-wrapper">
+                <div class="grid__data-wrapper">
+                    <h1>Lunch Today</h1>
+                    <p>Scraping data..</p>
+                </div>
+                <div class="grid__data-wrapper">
+                    <h1>Breakfast Today</h1>
+                    <p>Scraping data..</p>
+                </div>
+                <div class="grid__data-wrapper">
+                    <h1>Lunch Tomorrow</h1>
+                    <p>Scraping data..</p>
+                </div>
+                <div class="grid__data-wrapper">
+                    <h1>Breakfast Tomorrow</h1>
+                    <p>Scraping data..</p>
+                </div>
+            </div>
+        </div>
+        <div class="section__school-menu-mobile">
+            <h1>school menu.</h1>
+            <div class="main-wrapper">
+                <div class="grid__data-wrapper">
+                    <h1>Lunch Tomorrow</h1>
+                    <p>Scraping data..</p>
+                </div>
+                <div class="grid__data-wrapper">
+                    <h1>Breakfast Tomorrow</h1>
+                    <p>Scraping data..</p>
+                </div>
+            </div>
+        </div>
         <div class="section__random-meme">
             <div class="main-wrapper">
-                <h1>Random Meme Generator</h1>
+                <h1>random cat picture generator.</h1>
                 <div class="meme-wrapper">
                     <p>Fetching meme..</p>
                     <img src="https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png" alt="">
@@ -43,7 +77,7 @@
         const placeholder = document.getElementById('fact');
         placeholder.innerHTML = `${factdata.text}`;
         // Random Meme API
-        const memeurl = await fetch('https://meme-api.com/gimme/memes');
+        const memeurl = await fetch('https://meme-api.com/gimme/cats');
         const memedata = await memeurl.json();
 
         const textPlaceholder = document.querySelector('.meme-wrapper p');
@@ -54,7 +88,7 @@
         var cooldown = false;
         document.querySelector('.main-wrapper button').onclick = async function() {
             if (cooldown == true) return;
-            await fetch('https://meme-api.com/gimme/meme').then(res => res.json()).then(res => {
+            await fetch('https://meme-api.com/gimme/cats').then(res => res.json()).then(res => {
                 textPlaceholder.innerHTML = 'Fetching meme..';
                 imgPlaceholder.src = 'https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png';
                 document.querySelector('.main-wrapper button').innerHTML = 'PLS WAIT';
@@ -68,6 +102,37 @@
             });
            
         }
+        var request = new XMLHttpRequest();
+        request.open("GET", "https://cors-anywhere.herokuapp.com/" + "https://www.alwood.net/dining?filter=52802", true);
+        request.responseType = "document";
+        request.onload = function (e) {
+            if (request.readyState === 4) {
+                if (request.status === 200) {
+                var breakfasttoday = request.responseXML.querySelector("div.page-container-item:nth-child(2) > div:nth-child(1) > div:nth-child(2) > pre:nth-child(2)");
+                var breakfasttomorrow = request.responseXML.querySelector("div.page-container-item:nth-child(3) > div:nth-child(1) > div:nth-child(2) > pre:nth-child(2)");
+                var lunchtoday = request.responseXML.querySelector("div.page-container-item:nth-child(2) > div:nth-child(1) > div:nth-child(3) > pre:nth-child(2)");
+                var lunchtomorrow = request.responseXML.querySelector("div.page-container-item:nth-child(3) > div:nth-child(1) > div:nth-child(3) > pre:nth-child(2)");
+                const lunchTodayPlaceholder = document.querySelector(".section__school-menu > div:nth-child(2) > div:nth-child(1) > p:nth-child(2)");
+                const breakfastTodayPlaceholder = document.querySelector(".section__school-menu > div:nth-child(2) > div:nth-child(2) > p:nth-child(2)");
+                const lunchTomorrowPlaceholder = document.querySelector("div.grid__data-wrapper:nth-child(3) > p:nth-child(2)");
+                const breakfastTomorrowPlaceholder = document.querySelector("div.grid__data-wrapper:nth-child(4) > p:nth-child(2)");
+                const MOBILE__lunchTomorrow = document.querySelector(".section__school-menu-mobile > div:nth-child(2) > div:nth-child(1) > p:nth-child(2)");
+                const MOBILE__breakfastTomorrow = document.querySelector(".section__school-menu-mobile > div:nth-child(2) > div:nth-child(2) > p:nth-child(2)");
+                lunchTodayPlaceholder.innerHTML = lunchtoday.innerHTML;
+                breakfastTodayPlaceholder.innerHTML = breakfasttoday.innerHTML;
+                lunchTomorrowPlaceholder.innerHTML = lunchtomorrow.innerHTML;
+                breakfastTomorrowPlaceholder.innerHTML = breakfasttomorrow.innerHTML;
+                MOBILE__lunchTomorrow.innerHTML = lunchtomorrow.innerHTML;
+                MOBILE__breakfastTomorrow.innerHTML = breakfasttomorrow.innerHTML;
+                } else {
+                console.error(request.status, request.statusText);
+                }
+            }
+        };
+        request.onerror = function (e) {
+            console.error(request.status, request.statusText);
+        };
+        request.send(null);
     </script>
 </body>
 </html>
