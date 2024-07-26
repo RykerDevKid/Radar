@@ -13,6 +13,7 @@
     <div id="jquery-navigation"></div><script>$(function(){ $("#jquery-navigation").load("navigation/main.html") })</script>
 
     <!-- MAIN CONTENT -->
+    <button onclick="toTheTop()" id="toTheTop"><i class="fa-solid fa-arrow-up"></i></button> 
     <section>
         <div class="section__fact-holder">
             <h1>Here's the fact of the day!</h1>
@@ -93,15 +94,17 @@
                 imgPlaceholder.src = 'https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png';
                 document.querySelector('.main-wrapper button').innerHTML = 'PLS WAIT';
                 cooldown = true;
-                setTimeout(function() {
+                setTimeout(async function() {
                     textPlaceholder.innerHTML = `${res.title}`;
                     imgPlaceholder.src = `${res.url}`;
                     cooldown = false;
                     document.querySelector('.main-wrapper button').innerHTML = 'Generate';
+                    document.querySelector('.main-wrapper button').scrollIntoView();
                 }, 2000);
             });
            
         }
+        // Lunch Menu Scraper
         var request = new XMLHttpRequest();
         request.open("GET", "https://cors-anywhere.herokuapp.com/" + "https://www.alwood.net/dining?filter=52802", true);
         request.responseType = "document";
