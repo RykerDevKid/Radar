@@ -45,10 +45,11 @@ body {
     border-radius: 10px;
     font-size: 18px;
     transition: all 0.2s;
+    box-shadow: 4px 4px 2px 1px rgba(0, 0, 0, .6);
 }
 
 #toTheTop:hover {
-    opacity: 0.8;
+    background-color: rgba(0, 0, 0, .9);
 }
 
 section .section__fact-holder {

@@ -13,7 +13,7 @@
     <div id="jquery-navigation"></div><script>$(function(){ $("#jquery-navigation").load("navigation/main.html") })</script>
 
     <!-- MAIN CONTENT -->
-    <button onclick="toTheTop()" id="toTheTop"><i class="fa-solid fa-arrow-up"></i></button> 
+    <button onclick="toTheTop()" id="toTheTop">TOP</button> 
     <section>
         <div class="section__fact-holder">
             <h1>Here's the fact of the day!</h1>
@@ -59,9 +59,9 @@
         </div>
         <div class="section__random-meme">
             <div class="main-wrapper">
-                <h1>random cat picture generator.</h1>
+                <h1>cat picture generator.</h1>
                 <div class="meme-wrapper">
-                    <p>Fetching meme..</p>
+                    <p>Fetching gif..</p>
                     <img src="https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png" alt="">
                 </div>
                 <button>Generate</button>
@@ -78,31 +78,44 @@
         const placeholder = document.getElementById('fact');
         placeholder.innerHTML = `${factdata.text}`;
         // Random Meme API
-        const memeurl = await fetch('https://meme-api.com/gimme/cats');
+        const memeurl = await fetch('https://api.thecatapi.com/v1/images/search');
         const memedata = await memeurl.json();
 
-        const textPlaceholder = document.querySelector('.meme-wrapper p');
-        textPlaceholder.innerHTML = `${memedata.title}`;
         const imgPlaceholder = document.querySelector('.meme-wrapper img');
-        imgPlaceholder.src = `${memedata.url}`;
+        imgPlaceholder.src = `${memedata[0].url}`;
 
         var cooldown = false;
         document.querySelector('.main-wrapper button').onclick = async function() {
             if (cooldown == true) return;
-            await fetch('https://meme-api.com/gimme/cats').then(res => res.json()).then(res => {
-                textPlaceholder.innerHTML = 'Fetching meme..';
+            await fetch('https://api.thecatapi.com/v1/images/search').then(res => res.json()).then(res => {
                 imgPlaceholder.src = 'https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png';
                 document.querySelector('.main-wrapper button').innerHTML = 'PLS WAIT';
                 cooldown = true;
                 setTimeout(async function() {
-                    textPlaceholder.innerHTML = `${res.title}`;
-                    imgPlaceholder.src = `${res.url}`;
+                    imgPlaceholder.src = `${res[0].url}`;
                     cooldown = false;
                     document.querySelector('.main-wrapper button').innerHTML = 'Generate';
                     document.querySelector('.main-wrapper button').scrollIntoView();
                 }, 2000);
             });
            
+        }
+        // To The Top! Button
+        let arrowbutton = document.getElementById('toTheTop');
+
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                arrowbutton.style.display = "block";
+            } else {
+                arrowbutton.style.display = "none";
+            }
+        }
+
+        arrowbutton.onclick = function() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
         }
         // Lunch Menu Scraper
         var request = new XMLHttpRequest();
