@@ -16,59 +16,37 @@
     <!-- MAIN CONTENT -->
     <section>
         <div class="section__title">
-            <h1>Unblocked Games</h1>
-            <p>All the popular school websites, like Poki, fully accessible!</p>
+            <h1>game library.</h1>
+            <p>All your favorite school games easily accessible with the click of a button!</p>
         </div>
     </section>
 
     <section>
         <div class="section__games-list">
-            <ul>
-                <li class="info"><a href="">🔴 = PATCHED; 🟢 = WORKING;</a></li>
-                <li class="poki"><a href="https://108.181.33.135/__cpi.php?s=UkQ2YXlSaWJuc3ZoeGR2dG04WW9LbkhqTjE0b3FYeThIdFZnS0c4Y0hnZUVlRlBQLzl6cTdZc3pBNi9pYS9Sa2pBVXJKZ3RKOThUZ1VQRVF3bzhaSS8yVDVVcVMvUlBJTzhqdFFZUUo5djQ9&r=aHR0cHM6Ly8xMDguMTgxLjMzLjEzNS8%2FX19jcG89YUhSMGNITTZMeTl3YjJ0cExtTnZiUQ%3D%3D&__cpo=1">Poki Unblocked (🔴)</a></li>
-                <li class="1v1"><a href="">1v1.LoL Unblocked (🔴)</a></li>
-                <li class="smashkarts"><a href="">Smashkarts.io Unblocked (🔴)</a></li>
-                <li class="roblox"><a href="https://newalgebra.com/">Roblox Emulator Unblocked (🟢)</a></li>
-            </ul>
-            <div id="r4-widget-form"></div>
+            <div class="games-list__game">
+                <h1>Poki</h1>
+                <img src="https://static.toiimg.com/thumb/msid-109980845,width-1280,height-720,resizemode-4/109980845.jpg" alt="">
+                <div class="game__column">
+                    <p>Status 🟢</p>
+                    <button><a href="https://taco.rykermc.org/?__cpo=aHR0cHM6Ly9wb2tpLmNvbQ" target="_blank">Play</a></button>
+                </div>
+            </div>
+            <div class="games-list__game">
+                <h1>Minecraft Classic</h1>
+                <img src="https://www.minecraft.net/content/dam/minecraftnet/minecraft/news/minecraft-classic/MinecraftClassicScreenshot.jpeg" alt="">
+                <div class="game__column">
+                    <p>Status 🟢</p>
+                    <button><a href="https://taco.rykermc.org/?__cpo=aHR0cHM6Ly9jbGFzc2ljLm1pbmVjcmFmdC5uZXQ" target="_blank">Play</a></button>
+                </div>
+            </div>
         </div>
     </section>
 
     <section>
-        <div class="section__error">
-            <h1>Nothing to see here!</h1>
-            <p>This page is under construction.</p>
-        </div>
         <div class="section__device-error">
             <h1>Zoom out more to continue.</h1>
             <p>If you are on mobile, reload the page in desktop mode.</p>
         </div>
     </section>
-
-    <!-- JAVASCRIPT -->
-    <script>
-        // KEY SEQUENCE DETECTION
-
-        function loadPage() {
-            document.querySelector('.section__error').style.display = 'none';
-            document.querySelector('section .section__title').style.visibility = 'visible';
-            document.querySelector('section .section__games-list').style.display = 'flex';
-            document.querySelector('section .section__games-list').style.visibility = 'visible';
-        }
-
-        const pressed = [];
-        const secretCode = 'taco';
-        var enabled = true;
-        window.addEventListener('keyup', (e) => {
-            if (enabled == false) return;
-            pressed.push(e.key);
-            pressed.splice(-secretCode.length - 1 , pressed.length - secretCode.length);
-            if (pressed.join('').includes(secretCode)) {
-                console.log('Received the key sequence.');
-                loadPage();
-                enabled = false;
-            }
-        })
-    </script>
 </body>
 </html>

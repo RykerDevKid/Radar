@@ -30,17 +30,6 @@ body {
     padding-top: 60px;
 }
 
-section .section__error {
-    display: flex;
-    padding: 24px 0 24px 0;
-    flex-direction: column;
-    box-sizing: border-box;
-    margin-top: auto;
-    margin-right: auto;
-    margin-bottom: auto;
-    margin-left: auto;
-}
-
 section .section__device-error {
     display: flex;
     padding: 24px 0 24px 0;
@@ -51,18 +40,6 @@ section .section__device-error {
     margin-bottom: auto;
     margin-left: auto;
     visibility: hidden;
-}
-
-.section__error h1 {
-    font-family: 'sgrot', sans-serif;
-    text-align: center;
-}
-
-.section__error p {
-    text-align: center;
-    margin-top: 6px;
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 18px;
 }
 
 .section__device-error h1 {
@@ -86,7 +63,6 @@ section .section__title {
     margin-right: auto;
     margin-bottom: auto;
     margin-left: auto;
-    visibility: hidden;
 }
 
 .section__title h1 {
@@ -102,38 +78,69 @@ section .section__title {
 }
 
 section .section__games-list {
-    display: none;
-    padding: 24px 0 24px 0;
-    flex-direction: column;
-    box-sizing: border-box;
-    margin-top: auto;
-    margin-right: auto;
-    margin-bottom: auto;
-    margin-left: auto;
-    font-family: "jsa", sans-serif;
-    font-size: 24px;
-    visibility: hidden;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 600px 600px;
+    gap: 24px;
 }
 
-.section__games-list ul {
+.section__games-list .games-list__game {
     display: flex;
+    background-color: rgb(19, 22, 26);
     flex-direction: column;
+    height: auto;
+    border: 4px solid transparent;
+    border-radius: 6px;
+    padding: 12px;
+}
+
+.games-list__game h1 {
+    font-family: 'sgrot', sans-serif;
+    text-align: center;
+    margin-bottom: 12px;
+    color: white;
+}
+
+.games-list__game img {
+    width: 80%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 12px;
+    margin-bottom: 12px;
+}
+
+.games-list__game .game__column {
+    display: flex;
+    font-family: 'sgrot', sans-serif;
     width: 100%;
     align-items: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-radius: 12px;
-    color: #000;
+    justify-content: space-evenly;
+    flex-direction: row;
 }
 
-.section__games-list ul li:is(.info) {
-    list-style: none;
-    margin-bottom: 48px;
+.game__column p {
+    font-family: 'sgrot', sans-serif;
+    text-align: center;
+    color: white;
+    font-weight: 700;
+    font-size: 21px;
+    text-transform: uppercase;
 }
 
-.section__games-list ul li:not(.info) {
-    list-style: none;
-    padding: .75rem;
+.game__column button {
+    background-color: rgb(32, 158, 207);
+    border: none;
+    outline: none;
+    color: white;
+    padding: 12px 29px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    text-transform: uppercase;
+    font-weight: 700;
 }
 
 /* MEDIA QUERIES */
@@ -154,11 +161,22 @@ section .section__games-list {
     }
 }
 
+@media (max-width: 1264px) {
+    section .section__games-list {
+        grid-template-columns: 400px 400px;
+    }
+}
+
 @media (max-width: 1024px), (max-height: 640px) {
     section .section__device-error {
         visibility: visible;
     }
-    section .section__error {
+    section .section__title {
+        visibility: hidden;
+        display: none;
+    }
+    section .section__games-list {
+        visibility: hidden;
         display: none;
     }
 }
