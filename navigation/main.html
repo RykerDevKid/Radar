@@ -189,6 +189,14 @@
         dropdown.addEventListener('mouseout', function() {
             dropdown.style.display = 'none';
         });
+        // Click Listener
+        settings__button.addEventListener('click', function() {
+            if (dropdown.style.display === 'inline-block') {
+                dropdown.style.display = 'none';
+            } else {
+                dropdown.style.display = 'inline-block';
+            }
+        });
 
         // Dark Mode Switch
 
