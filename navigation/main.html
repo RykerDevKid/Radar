@@ -174,27 +174,34 @@
     <script>
         // Listen for Button Hover
         var settings__button = document.getElementById('settings-button');
+        var button__angle = document.querySelector('#settings-button i');
         var dropdown = document.querySelector('.dropdown');
         var navbar = document.querySelector('.header__content');
         settings__button.addEventListener('mouseover', function() {
             dropdown.style.display = 'inline-block';
+            button__angle.className = 'fa fa-angle-up';
         });
         settings__button.addEventListener('mouseout', function() {
             dropdown.style.display = 'none';
+            button__angle.className = 'fa fa-angle-down';
         });
         // Listen for Dropdown Menu Hover
         dropdown.addEventListener('mouseover', function() {
             dropdown.style.display = 'inline-block';
+            button__angle.className = 'fa fa-angle-up';
         });
         dropdown.addEventListener('mouseout', function() {
             dropdown.style.display = 'none';
+            button__angle.className = 'fa fa-angle-down';
         });
         // Click Listener
         settings__button.addEventListener('click', function() {
             if (dropdown.style.display === 'inline-block') {
                 dropdown.style.display = 'none';
+                button__angle.className = 'fa fa-angle-down';
             } else {
                 dropdown.style.display = 'inline-block';
+                button__angle.className = 'fa fa-angle-up';
             }
         });
 
