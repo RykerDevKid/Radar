@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TacoPlanet</title>
-    <meta name="description" content="All your favorite school games completely unblocked. Yw!"/>
+    <meta name="description" content="All your favorite school games completely unblocked. Yw!" />
 
     <link rel="stylesheet" href="index.css">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
+
 <body>
-    <div id="jquery-navigation"></div><script>$(function(){ $("#jquery-navigation").load("navigation/main.html") })</script>
+    <div id="jquery-navigation"></div>
+    <script>$(function () { $("#jquery-navigation").load("navigation/main.html") })</script>
 
     <!-- MAIN CONTENT -->
-    <button onclick="toTheTop()" id="toTheTop">TOP</button> 
+    <button onclick="toTheTop()" id="toTheTop">TOP</button>
     <section>
         <div class="section__fact-holder">
             <h1>Here's the fact of the day!</h1>
             <p id="fact">[ Loading Fact.. ]</p>
         </div>
-        
+
     </section>
 
     <section class="section__two">
@@ -40,17 +43,18 @@
                     <h1>Lunch</h1>
                     <p>Scraping data..</p>
                 </div>
-        </div>
-        <div class="section__random-meme">
-            <div class="main-wrapper">
-                <h1>cat picture generator.</h1>
-                <div class="meme-wrapper">
-                    <p>Fetching gif..</p>
-                    <img src="https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png" alt="">
-                </div>
-                <button>Generate</button>
             </div>
-        </div>
+            <div class="section__random-meme">
+                <div class="main-wrapper">
+                    <h1>cat picture generator.</h1>
+                    <div class="meme-wrapper">
+                        <p>Fetching gif..</p>
+                        <img src="https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png"
+                            alt="">
+                    </div>
+                    <button>Generate</button>
+                </div>
+            </div>
     </section>
 
     <!-- JAVASCRIPT -->
@@ -61,7 +65,7 @@
             placeholder.innerHTML = `${res.text}`;
         });
 
-        
+
         // Random Meme API
         const memeurl = await fetch('https://api.thecatapi.com/v1/images/search');
         const memedata = await memeurl.json();
@@ -70,26 +74,26 @@
         imgPlaceholder.src = `${memedata[0].url}`;
 
         var cooldown = false;
-        document.querySelector('.main-wrapper button').onclick = async function() {
+        document.querySelector('.main-wrapper button').onclick = async function () {
             if (cooldown == true) return;
             await fetch('https://api.thecatapi.com/v1/images/search').then(res => res.json()).then(res => {
                 imgPlaceholder.src = 'https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png';
                 document.querySelector('.main-wrapper button').innerHTML = 'PLS WAIT';
                 cooldown = true;
-                setTimeout(async function() {
+                setTimeout(async function () {
                     imgPlaceholder.src = `${res[0].url}`;
                     cooldown = false;
                     document.querySelector('.main-wrapper button').innerHTML = 'Generate';
-                    
+
                 }, 2000);
                 document.querySelector('.main-wrapper button').scrollIntoView();
             });
-           
+
         }
         // To The Top! Button
         let arrowbutton = document.getElementById('toTheTop');
 
-        window.onscroll = function() {scrollFunction()};
+        window.onscroll = function () { scrollFunction() };
 
         function scrollFunction() {
             if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
@@ -99,7 +103,7 @@
             }
         }
 
-        arrowbutton.onclick = function() {
+        arrowbutton.onclick = function () {
             document.body.scrollTop = 0;
             document.documentElement.scrollTop = 0;
         }
@@ -110,22 +114,22 @@
         request.onload = function (e) {
             if (request.readyState === 4) {
                 if (request.status === 200) {
-                var breakfasttoday = request.responseXML.querySelector("div.page-container-item:nth-child(2) > div:nth-child(1) > div:nth-child(2) > pre:nth-child(2)");
-                var breakfasttomorrow = request.responseXML.querySelector("div.page-container-item:nth-child(3) > div:nth-child(1) > div:nth-child(2) > pre:nth-child(2)");
-                var lunchtoday = request.responseXML.querySelector("div.page-container-item:nth-child(2) > div:nth-child(1) > div:nth-child(3) > pre:nth-child(2)");
-                var lunchtomorrow = request.responseXML.querySelector("div.page-container-item:nth-child(3) > div:nth-child(1) > div:nth-child(3) > pre:nth-child(2)");
+                    var breakfasttoday = request.responseXML.querySelector("div.page-container-item:nth-child(2) > div:nth-child(1) > div:nth-child(2) > pre:nth-child(2)");
+                    var breakfasttomorrow = request.responseXML.querySelector("div.page-container-item:nth-child(3) > div:nth-child(1) > div:nth-child(2) > pre:nth-child(2)");
+                    var lunchtoday = request.responseXML.querySelector("div.page-container-item:nth-child(2) > div:nth-child(1) > div:nth-child(3) > pre:nth-child(2)");
+                    var lunchtomorrow = request.responseXML.querySelector("div.page-container-item:nth-child(3) > div:nth-child(1) > div:nth-child(3) > pre:nth-child(2)");
 
-                const lunchTodayPlaceholder = document.querySelector("div.grid__data-wrapper:nth-child(1) > p:nth-child(5)");
-                const breakfastTodayPlaceholder = document.querySelector("div.grid__data-wrapper:nth-child(1) > p:nth-child(3)");
-                const lunchTomorrowPlaceholder = document.querySelector("div.grid__data-wrapper:nth-child(2) > p:nth-child(5)");
-                const breakfastTomorrowPlaceholder = document.querySelector("div.grid__data-wrapper:nth-child(2) > p:nth-child(3)");
+                    const lunchTodayPlaceholder = document.querySelector("div.grid__data-wrapper:nth-child(1) > p:nth-child(5)");
+                    const breakfastTodayPlaceholder = document.querySelector("div.grid__data-wrapper:nth-child(1) > p:nth-child(3)");
+                    const lunchTomorrowPlaceholder = document.querySelector("div.grid__data-wrapper:nth-child(2) > p:nth-child(5)");
+                    const breakfastTomorrowPlaceholder = document.querySelector("div.grid__data-wrapper:nth-child(2) > p:nth-child(3)");
 
-                lunchTodayPlaceholder.innerHTML = lunchtoday.innerHTML;
-                breakfastTodayPlaceholder.innerHTML = breakfasttoday.innerHTML;
-                lunchTomorrowPlaceholder.innerHTML = lunchtomorrow.innerHTML;
-                breakfastTomorrowPlaceholder.innerHTML = breakfasttomorrow.innerHTML;
+                    lunchTodayPlaceholder.innerHTML = lunchtoday.innerHTML;
+                    breakfastTodayPlaceholder.innerHTML = breakfasttoday.innerHTML;
+                    lunchTomorrowPlaceholder.innerHTML = lunchtomorrow.innerHTML;
+                    breakfastTomorrowPlaceholder.innerHTML = breakfasttomorrow.innerHTML;
                 } else {
-                console.error(request.status, request.statusText);
+                    console.error(request.status, request.statusText);
                 }
             }
         };
@@ -135,4 +139,5 @@
         request.send(null);
     </script>
 </body>
+
 </html>

@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
-    
     <header class="header">
         <div class="header__content">
             <a href="/" class="logo">
@@ -17,12 +18,17 @@
                         <a href="/games" class="nav__link">Games</a>
                     </li>
                     <li class="nav__item">
-                        <a href="#" class="nav__link">My Projects</a>
+                        <a href="#" class="nav__link" id="settings-button">Settings <i class="fa fa-angle-down"></i></a>
                     </li>
                     <li class="nav__item">
                         <a href="https://discord.gg/invite/etNp9puMkP" target="_blank" class="btn">Discord</a>
                     </li>
                 </ul>
+                <div class="dropdown">
+                    <div class="dropdown-content">
+                        <a href="#">Dark Mode: Off</a>
+                    </div>
+                </div>
             </nav>
         </div>
     </header>
@@ -78,17 +84,9 @@
             font-family: "Space Grotesk", sans-serif;
         }
 
-        .nav {
-
-        }
-
         .nav__list {
             display: flex;
             column-gap: 25px;
-        }
-
-        .nav__item {
-
         }
 
         .nav__link {
@@ -97,6 +95,29 @@
             transition: all 0.2s;
             position: relative;
             font-family: "Josefin Sans", sans-serif;
+        }
+
+        .nav .dropdown {
+            position: absolute;
+            display: none;
+            border: 10px solid transparent;
+        }
+
+        .dropdown .dropdown-content {
+            background-color: #fff;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, .2);
+            border-radius: 4px;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            text-align: center;
+            display: block;
+            font-family: 'sgrot', sans-serif;
+            font-weight: 600;
         }
 
         .nav__link:hover,
@@ -150,5 +171,98 @@
             }
         }
     </style>
+    <script>
+        // Listen for Button Hover
+        var settings__button = document.getElementById('settings-button');
+        var dropdown = document.querySelector('.dropdown');
+        var navbar = document.querySelector('.header__content');
+        settings__button.addEventListener('mouseover', function() {
+            dropdown.style.display = 'inline-block';
+        });
+        settings__button.addEventListener('mouseout', function() {
+            dropdown.style.display = 'none';
+        });
+        // Listen for Dropdown Menu Hover
+        dropdown.addEventListener('mouseover', function() {
+            dropdown.style.display = 'inline-block';
+        });
+        dropdown.addEventListener('mouseout', function() {
+            dropdown.style.display = 'none';
+        });
+
+        // Dark Mode Switch
+
+        function setDark() {
+            document.querySelector('body').style.backgroundColor = 'rgb(11, 13, 15)';
+            document.querySelector('body').style.color = '#fff';
+            if (!document.querySelector('.main-wrapper .meme-wrapper')) return;
+            if (!document.querySelector('.meme-wrapper img')) return;
+            if (!document.querySelector('.main-wrapper button')) return;
+            if (!document.querySelector('.grid__data-wrapper')) return;
+            if (!document.querySelector('.grid__data-wrapper:nth-child(2)')) return;
+            if (!document.getElementById('toTheTop')) return;
+            document.getElementById('toTheTop').style.backgroundColor = '#fff';
+            document.getElementById('toTheTop').style.color = '#000';
+            document.querySelector('.main-wrapper .meme-wrapper').style.border = '4px solid white';
+            document.querySelector('.meme-wrapper img').style.border = '4px solid white';
+            document.querySelector('.main-wrapper button').style.backgroundColor = '#fff';
+            document.querySelector('.main-wrapper button').style.color = '#000';
+            document.querySelector('.grid__data-wrapper').style.border = '4px solid white';
+            document.querySelector('.grid__data-wrapper:nth-child(2)').style.border = '4px solid white';
+        }
+
+        function setLight() {
+            document.querySelector('body').style.backgroundColor = '#e8f0f7';
+            document.querySelector('body').style.color = '#000';
+            if (!document.getElementById('toTheTop')) return;
+            if (!document.querySelector('.main-wrapper .meme-wrapper')) return;
+            if (!document.querySelector('.meme-wrapper img')) return;
+            if (!document.querySelector('.main-wrapper button')) return;
+            if (!document.querySelector('.grid__data-wrapper')) return;
+            if (!document.querySelector('.grid__data-wrapper:nth-child(2)')) return;
+            document.getElementById('toTheTop').style.backgroundColor = '#000';
+            document.getElementById('toTheTop').style.color = '#fff';
+            document.querySelector('.main-wrapper .meme-wrapper').style.border = '4px solid black';
+            document.querySelector('.meme-wrapper img').style.border = '4px solid black';
+            document.querySelector('.main-wrapper button').style.backgroundColor = '#000';
+            document.querySelector('.main-wrapper button').style.color = '#fff';
+            document.querySelector('.grid__data-wrapper').style.border = '4px solid black';
+            document.querySelector('.grid__data-wrapper:nth-child(2)').style.border = '4px solid black';
+        }
+
+        //
+
+        let darkMode = localStorage.getItem('darkMode');
+        var toggleButton = document.querySelector('.dropdown-content a');
+
+        const enableDarkMode = () => {
+            document.body.classList.add('darkmode');
+            setDark();
+            localStorage.setItem('darkMode', 'enabled');
+            toggleButton.textContent = 'Dark Mode: On';
+        };
+
+        const disableDarkMode = () => {
+            document.body.classList.remove('darkmode');
+            setLight();
+            localStorage.setItem('darkMode', null);
+            toggleButton.textContent = 'Dark Mode: Off';
+        };
+
+        if (darkMode === 'enabled') {
+            enableDarkMode();
+        }
+
+        toggleButton.addEventListener('click', () => {
+            darkMode = localStorage.getItem('darkMode');
+            if (darkMode !== 'enabled') {
+                enableDarkMode();
+            } else {
+                disableDarkMode();
+            }
+        })
+
+    </script>
+
 </body>
 </html>
