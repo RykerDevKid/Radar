@@ -16,7 +16,6 @@
     <script>$(function () { $("#jquery-navigation").load("navigation/main.html") })</script>
 
     <!-- MAIN CONTENT -->
-    <button onclick="toTheTop()" id="toTheTop">TOP</button>
     <section>
         <div class="section__fact-holder">
             <h1>Here's the fact of the day!</h1>
@@ -44,27 +43,18 @@
                     <p>Scraping data..</p>
                 </div>
             </div>
-            <div class="section__changelog">
-                <h1>what's new?</h1>
-                <div class="main-wrapper">
-                    <h1>Version 22.4</h1>
-                    <ul>
-                        <li><p>DARK MODE UPDATE! Enable it with the new <em>Settings <i class="fa fa-angle-down"></i></em> dropdown!</p></li>
-                        <li><p>Synchronous School Menu!</p></li>
-                    </ul>
+        </div>
+        <div class="section__random-meme">
+            <div class="main-wrapper">
+                <h1>cat picture generator.</h1>
+                <div class="meme-wrapper">
+                    <p>Fetching gif..</p>
+                    <img src="https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png"
+                        alt="">
                 </div>
+                <button>Generate</button>
             </div>
-            <div class="section__random-meme">
-                <div class="main-wrapper">
-                    <h1>cat picture generator.</h1>
-                    <div class="meme-wrapper">
-                        <p>Fetching gif..</p>
-                        <img src="https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png"
-                            alt="">
-                    </div>
-                    <button>Generate</button>
-                </div>
-            </div>
+        </div>
     </section>
 
     <!-- JAVASCRIPT -->
@@ -96,26 +86,8 @@
                     document.querySelector('.main-wrapper button').innerHTML = 'Generate';
 
                 }, 2000);
-                document.querySelector('.main-wrapper button').scrollIntoView();
             });
 
-        }
-        // To The Top! Button
-        let arrowbutton = document.getElementById('toTheTop');
-
-        window.onscroll = function () { scrollFunction() };
-
-        function scrollFunction() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                arrowbutton.style.display = "block";
-            } else {
-                arrowbutton.style.display = "none";
-            }
-        }
-
-        arrowbutton.onclick = function () {
-            document.body.scrollTop = 0;
-            document.documentElement.scrollTop = 0;
         }
         // Lunch Menu Scraper
         var request = new XMLHttpRequest();

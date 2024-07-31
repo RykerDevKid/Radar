@@ -30,28 +30,6 @@ body {
     padding-top: 60px;
 }
 
-#toTheTop {
-    display: none;
-    position: fixed;
-    bottom: 20px;
-    right: 30px;
-    z-index: 99;
-    border: none;
-    outline: none;
-    background-color: black;
-    color: white;
-    cursor: pointer;
-    padding: 15px;
-    border-radius: 25px;
-    font-size: 18px;
-    transition: all 0.2s;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, .2);
-}
-
-#toTheTop:hover {
-    background-color: rgba(0, 0, 0, .9);
-}
-
 section .section__fact-holder {
     display: flex;
     padding: 24px 0 24px 0;
@@ -109,6 +87,14 @@ section .section__school-menu {
     font-family: 'sgrot', sans-serif;
     text-align: center;
     margin-bottom: 10px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.section__school-menu .grid__data-wrapper h1:not(:nth-child(1)) {
+    font-family: 'sgrot', sans-serif;
+    text-align: center;
+    margin-bottom: 10px;
     text-decoration: underline;
     font-weight: 600;
 }
@@ -133,48 +119,6 @@ section .section__school-menu {
     margin-bottom: 8px;
     margin-left: 6px;
     border: 4px solid black;
-}
-
-section .section__changelog {
-    display: flex;
-    padding: 8px 0 24px 0;
-    flex-direction: column;
-    box-sizing: border-box;
-    text-align: center;
-    margin-top: 8px;
-    margin-right: 6px;
-    margin-bottom: 8px;
-    margin-left: 6px;
-}
-
-.section__changelog .main-wrapper {
-    border: 4px solid black;
-    display: flex;
-    padding: 12px 24px 12px 24px;
-    flex-direction: column;
-    box-sizing: border-box;
-    margin-top: 0;
-    margin-right: auto;
-    margin-bottom: auto;
-    margin-left: auto;
-}
-
-.section__changelog .main-wrapper ul {
-    list-style-type: circle;
-    margin-top: 12px;
-}
-
-.section__changelog .main-wrapper li {
-    list-style-type: circle;
-    margin-top: 12px;
-}
-
-.section__changelog .main-wrapper p {
-    text-align: left;
-}
-
-.section__changelog .main-wrapper h1 {
-    text-align: left;
 }
 
 section .section__random-meme,
