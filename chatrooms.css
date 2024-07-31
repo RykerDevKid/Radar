@@ -88,3 +88,10 @@ section .section__app {
         column-gap: 20px;
     }
 }
+
+@media (min-width: 1000px) {
+    .section__app widgetbot {
+        width: 40vw;
+        height: 60vh;
+    }
+}
