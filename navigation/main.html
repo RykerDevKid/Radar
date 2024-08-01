@@ -15,7 +15,7 @@
             <nav class="nav">
                 <ul class="nav__list">
                     <li class="nav__item">
-                        <a href="/guestchat" class="nav__link">Guest Chat</a>
+                        <a href="/chat" class="nav__link">Chat</a>
                     </li>
                     <li class="nav__item">
                         <a href="#" class="nav__link" id="settings-button">Settings <i class="fa fa-angle-down"></i></a>
@@ -207,35 +207,19 @@
         // Dark Mode Switch
 
         function setDark() {
-            document.querySelector('body').style.backgroundColor = 'rgb(11, 13, 15)';
-            document.querySelector('body').style.color = '#fff';
-            if (!document.querySelector('.main-wrapper .meme-wrapper')) return;
-            if (!document.querySelector('.meme-wrapper img')) return;
-            if (!document.querySelector('.main-wrapper button')) return;
-            if (!document.querySelector('.grid__data-wrapper')) return;
-            if (!document.querySelector('.grid__data-wrapper:nth-child(2)')) return;
-            document.querySelector('.main-wrapper .meme-wrapper').style.border = '4px solid white';
-            document.querySelector('.meme-wrapper img').style.border = '4px solid white';
-            document.querySelector('.main-wrapper button').style.backgroundColor = '#fff';
-            document.querySelector('.main-wrapper button').style.color = '#000';
-            document.querySelector('.grid__data-wrapper').style.border = '4px solid white';
-            document.querySelector('.grid__data-wrapper:nth-child(2)').style.border = '4px solid white';
+            document.documentElement.style.setProperty('--bgr-light', 'rgb(11, 13, 15)');
+            document.documentElement.style.setProperty('--clr-light', 'rgb(255, 255, 255)');
+            document.documentElement.style.setProperty('--brdr-light', 'rgb(255, 255, 255)');
+            document.documentElement.style.setProperty('--btn-light', 'rgb(255, 255, 255)');
+            document.documentElement.style.setProperty('--btn-clr-light', 'rgb(0, 0, 0)');
         }
 
         function setLight() {
-            document.querySelector('body').style.backgroundColor = '#e8f0f7';
-            document.querySelector('body').style.color = '#000';
-            if (!document.querySelector('.main-wrapper .meme-wrapper')) return;
-            if (!document.querySelector('.meme-wrapper img')) return;
-            if (!document.querySelector('.main-wrapper button')) return;
-            if (!document.querySelector('.grid__data-wrapper')) return;
-            if (!document.querySelector('.grid__data-wrapper:nth-child(2)')) return;
-            document.querySelector('.main-wrapper .meme-wrapper').style.border = '4px solid black';
-            document.querySelector('.meme-wrapper img').style.border = '4px solid black';
-            document.querySelector('.main-wrapper button').style.backgroundColor = '#000';
-            document.querySelector('.main-wrapper button').style.color = '#fff';
-            document.querySelector('.grid__data-wrapper').style.border = '4px solid black';
-            document.querySelector('.grid__data-wrapper:nth-child(2)').style.border = '4px solid black';
+            document.documentElement.style.setProperty('--bgr-light', 'rgb(232, 240, 247)');
+            document.documentElement.style.setProperty('--clr-light', 'rgb(0, 0, 0)');
+            document.documentElement.style.setProperty('--brdr-light', 'rgb(0, 0, 0)');
+            document.documentElement.style.setProperty('--btn-light', 'rgb(0, 0, 0)');
+            document.documentElement.style.setProperty('--btn-clr-light', 'rgb(255, 255, 255)');
         }
 
         //

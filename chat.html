@@ -7,7 +7,7 @@
     <title>TacoPlanet</title>
     <meta name="description" content="All your favorite school games completely unblocked. Yw!" />
 
-    <link rel="stylesheet" href="chatrooms.css">
+    <link rel="stylesheet" href="chat.css">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 
@@ -16,21 +16,13 @@
     <script>$(function () { $("#jquery-navigation").load("navigation/main.html") })</script>
 
     <!-- MAIN CONTENT -->
-    <section>
-        <div class="section__title">
-            <h1>guest chat.</h1>
-            <p>Click the chatbox, and pick a display name to get started.</p>
-        </div>
-
-    </section>
-
-    <section>
-        <div class="section__app">
-            <widgetbot server="1268339554839167050" channel="1268339555493220415"></widgetbot>
-            <script src="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed"></script>
-        </div>
-    </section>
-
+    <div class="desktop-chat">
+        <widgetbot class="desktop" server="1268339554839167050" channel="1268339555493220415" width="100%" height="96vh"></widgetbot>
+    </div>
+    <div class="mobile-chat">
+        <widgetbot class="mobile" server="1268339554839167050" channel="1268339555493220415" width="100%" height="90vh"></widgetbot>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed"></script>
     <!-- JAVASCRIPT -->
 </body>
 

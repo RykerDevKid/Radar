@@ -5,6 +5,17 @@
     box-sizing: border-box;
 }
 
+:root {
+    --bgr-light: rgb(232, 240, 247);
+
+    --clr-light: rgb(0, 0, 0);
+
+    --brdr-light: rgb(0, 0, 0);
+
+    --btn-light: rgb(0, 0, 0);
+    --btn-clr-light: rgb(255, 255, 255);
+}
+
 /* IMPORT FONTS */
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
 
@@ -26,49 +37,17 @@
 /* BASE STYLES */
 
 body {
-    background-color: #e8f0f7;
+    background-color: var(--bgr-light);
     padding-top: 60px;
 }
 
-section .section__title {
-    display: flex;
-    padding: 24px 10px 24px 10px;
-    flex-direction: column;
-    box-sizing: border-box;
-    margin-top: 20px;
-    margin-right: auto;
-    margin-bottom: auto;
-    margin-left: auto;
-}
-
-.section__title h1 {
-    font-family: 'sgrot', sans-serif;
-    text-align: center;
-}
-
-.section__title p {
-    text-align: center;
-    margin-top: 6px;
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 18px;
-}
-
-section .section__app {
-    display: flex;
-    padding: 24px 0 24px 0;
-    flex-direction: column;
-    box-sizing: border-box;
-    margin-top: 12px;
-    margin-right: auto;
-    margin-bottom: auto;
-    margin-left: auto;
-}
-
-.section__app widgetbot {
+.desktop-chat widgetbot {
     margin-left: auto;
     margin-right: auto;
-    width: 90vw;
-    height: 45vh;
+}
+
+.mobile-chat {
+    display: none;
 }
 
 /* MEDIA QUERIES */
@@ -87,11 +66,11 @@ section .section__app {
     .nav__list {
         column-gap: 20px;
     }
-}
 
-@media (min-width: 1000px) {
-    .section__app widgetbot {
-        width: 40vw;
-        height: 60vh;
+    .mobile-chat {
+        display: block;
+    }
+    .desktop-chat {
+        display: none;
     }
 }

@@ -5,6 +5,17 @@
     box-sizing: border-box;
 }
 
+:root {
+    --bgr-light: rgb(232, 240, 247);
+
+    --clr-light: rgb(0, 0, 0);
+
+    --brdr-light: rgb(0, 0, 0);
+
+    --btn-light: rgb(0, 0, 0);
+    --btn-clr-light: rgb(255, 255, 255);
+}
+
 /* IMPORT FONTS */
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
 
@@ -26,7 +37,7 @@
 /* BASE STYLES */
 
 body {
-    background-color: #e8f0f7;
+    background-color: var(--bgr-light);
     padding-top: 60px;
 }
 
@@ -39,6 +50,7 @@ section .section__fact-holder {
     margin-right: auto;
     margin-bottom: auto;
     margin-left: auto;
+    color: var(--clr-light);
 }
 
 .section__fact-holder h1 {
@@ -73,6 +85,7 @@ section .section__school-menu {
     margin-right: auto;
     margin-bottom: auto;
     margin-left: auto;
+    color: var(--clr-light);
 }
 
 .section__school-menu h1[class="data-wrapper__date"] {
@@ -118,7 +131,7 @@ section .section__school-menu {
     margin-right: 6px;
     margin-bottom: 8px;
     margin-left: 6px;
-    border: 4px solid black;
+    border: 4px solid var(--brdr-light);
 }
 
 section .section__random-meme,
@@ -137,6 +150,7 @@ section .section__random-meme,
 section .section__random-meme {
     align-items: center;
     justify-content: center;
+    color: var(--clr-light);
 }
 
 .section__random-meme .main-wrapper {
@@ -149,12 +163,12 @@ section .section__random-meme {
 }
 
 .main-wrapper .meme-wrapper {
-    border: 4px solid black;
+    border: 4px solid var(--brdr-light);
     padding: 24px 24px;
 }
 
 .meme-wrapper img {
-    border: 4px solid black;
+    border: 4px solid var(--brdr-light);
     margin-top: 10px;
     width: 80%;
     margin-left: auto;
@@ -180,10 +194,10 @@ section .section__random-meme {
 .main-wrapper button {
     border: none;
     border-radius: 6px;
-    background-color: #000;
+    background-color: var(--btn-light);
     width: 30%;
     height: 36px;
-    color: white;
+    color: var(--btn-clr-light);
     font-family: "jsa", sans-serif;
     font-weight: 800;
     font-size: 16px;
